@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using BlackJackk.Models;
+using BlackJack.Models;
 
 namespace BlackJack.Data
 {
@@ -14,6 +14,9 @@ namespace BlackJack.Data
         {
         }
 
-        public DbSet<BlackJackk.Models.User> User { get; set; } = default!;
+        public DbSet<BlackJack.Models.User> User { get; set; } = default!;
+        public DbSet<BlackJack.Models.PaymentMethod> PaymentMethod { get; set; } = default!;
+        public DbSet<BlackJack.Models.CreditCard> CreditCard { get; set; } = default!;
+        public DbSet<BlackJack.Models.SupportTicket> SupportTicket { get; set; } = default!;
     }
 }

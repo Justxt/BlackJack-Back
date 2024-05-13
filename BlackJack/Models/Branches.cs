@@ -1,4 +1,4 @@
-﻿namespace BlackJackk.Models
+﻿namespace BlackJack.Models
 {
     public class Branches
     {

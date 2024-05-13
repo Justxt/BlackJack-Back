@@ -1,4 +1,4 @@
-﻿namespace BlackJackk.Models
+﻿namespace BlackJack.Models
 {
     public class User
     {
@@ -10,10 +10,6 @@
         public string Phone { get; set; }
         public string Password { get; set; }
         public string ConfirmPassword { get; set; }
-
-        //Relacion con la Membresia
-        public int? MembershipId { get; set; }
-        public Membership Membership { get; set; }
 
         //Relacion con el Metodo de Paago
         public ICollection<PaymentMethod> PaymentMethods { get; set; }

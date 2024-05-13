@@ -1,16 +1,19 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using BlackJack.Models;
+using System.ComponentModel.DataAnnotations;
 
-namespace BlackJackk.Models
+namespace BlackJack.Models
 {
     public class PaymentMethod
     {
         public int Id { get; set; }
-        [Required(ErrorMessage = "El tipo es obligatorio")]
-        public string Type { get; set; }
-        [Required(ErrorMessage = "La informacion es obligatoria obligatorio")]
-        public string Information { get; set; }
 
-        //Relacion con el User
+        [Required(ErrorMessage = "El tipo de método de pago es obligatorio.")]
+        public string Type { get; set; }
+
+        // Relación con Tarjeta de Crédito
+        public CreditCard CreditCard { get; set; }
+
+        // Relación con Usuario
         public int UserId { get; set; }
         public User User { get; set; }
     }

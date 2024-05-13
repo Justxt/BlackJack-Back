@@ -22,7 +22,45 @@ namespace BlackJack.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("BlackJackk.Models.Credits", b =>
+            modelBuilder.Entity("BlackJack.Models.CreditCard", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("CVV")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CardHolderName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CardNumber")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ExpiryDate")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Type")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("CreditCard");
+                });
+
+            modelBuilder.Entity("BlackJack.Models.Credits", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -47,7 +85,7 @@ namespace BlackJack.Migrations
                     b.ToTable("Credits");
                 });
 
-            modelBuilder.Entity("BlackJackk.Models.Membership", b =>
+            modelBuilder.Entity("BlackJack.Models.PaymentMethod", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -55,36 +93,8 @@ namespace BlackJack.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("DurationTimeMonth")
+                    b.Property<int>("CreditCardId")
                         .HasColumnType("int");
-
-                    b.Property<decimal>("Price")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<string>("Type")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Membership");
-                });
-
-            modelBuilder.Entity("BlackJackk.Models.PaymentMethod", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Information")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Type")
                         .IsRequired()
@@ -94,13 +104,15 @@ namespace BlackJack.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CreditCardId");
 
                     b.HasIndex("UserId");
 
                     b.ToTable("PaymentMethod");
                 });
 
-            modelBuilder.Entity("BlackJackk.Models.SupportTicket", b =>
+            modelBuilder.Entity("BlackJack.Models.SupportTicket", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -108,28 +120,25 @@ namespace BlackJack.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<DateTime>("CreatedDate")
+                    b.Property<DateTime>("CreationDate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("ResolutionDate")
+                    b.Property<DateTime?>("ResolutionDate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Status")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Title")
+                    b.Property<string>("Subject")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("UserId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("UsuarioId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -139,7 +148,7 @@ namespace BlackJack.Migrations
                     b.ToTable("SupportTicket");
                 });
 
-            modelBuilder.Entity("BlackJackk.Models.User", b =>
+            modelBuilder.Entity("BlackJack.Models.User", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -163,9 +172,6 @@ namespace BlackJack.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("MembershipId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -180,26 +186,13 @@ namespace BlackJack.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("MembershipId");
-
                     b.ToTable("User");
                 });
 
-            modelBuilder.Entity("BlackJackk.Models.Credits", b =>
+            modelBuilder.Entity("BlackJack.Models.CreditCard", b =>
                 {
-                    b.HasOne("BlackJackk.Models.User", "User")
-                        .WithOne("Credits")
-                        .HasForeignKey("BlackJackk.Models.Credits", "UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("User");
-                });
-
-            modelBuilder.Entity("BlackJackk.Models.PaymentMethod", b =>
-                {
-                    b.HasOne("BlackJackk.Models.User", "User")
-                        .WithMany("PaymentMethods")
+                    b.HasOne("BlackJack.Models.User", "User")
+                        .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -207,9 +200,39 @@ namespace BlackJack.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("BlackJackk.Models.SupportTicket", b =>
+            modelBuilder.Entity("BlackJack.Models.Credits", b =>
                 {
-                    b.HasOne("BlackJackk.Models.User", "User")
+                    b.HasOne("BlackJack.Models.User", "User")
+                        .WithOne("Credits")
+                        .HasForeignKey("BlackJack.Models.Credits", "UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("BlackJack.Models.PaymentMethod", b =>
+                {
+                    b.HasOne("BlackJack.Models.CreditCard", "CreditCard")
+                        .WithMany()
+                        .HasForeignKey("CreditCardId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("BlackJack.Models.User", "User")
+                        .WithMany("PaymentMethods")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("CreditCard");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("BlackJack.Models.SupportTicket", b =>
+                {
+                    b.HasOne("BlackJack.Models.User", "User")
                         .WithMany("SupportTicket")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -218,16 +241,7 @@ namespace BlackJack.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("BlackJackk.Models.User", b =>
-                {
-                    b.HasOne("BlackJackk.Models.Membership", "Membership")
-                        .WithMany()
-                        .HasForeignKey("MembershipId");
-
-                    b.Navigation("Membership");
-                });
-
-            modelBuilder.Entity("BlackJackk.Models.User", b =>
+            modelBuilder.Entity("BlackJack.Models.User", b =>
                 {
                     b.Navigation("Credits")
                         .IsRequired();

@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace BlackJackk.Models
+namespace BlackJack.Models
 {
     public class Credits
     {
