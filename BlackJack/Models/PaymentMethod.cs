@@ -11,6 +11,7 @@ namespace BlackJack.Models
         public string Type { get; set; }
 
         // Relación con Tarjeta de Crédito
+        public int CreditCardId { get; set; }
         public CreditCard CreditCard { get; set; }
 
         // Relación con Usuario

@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppBlackJack.Pages.Register"
+             Title="Register"
+             Shell.NavBarIsVisible="False">
+
+    <Grid RowDefinitions=".1*, .7*">
+        <Image Source="blackjack2.png" Aspect="AspectFit" BackgroundColor="red"/>
+        <Grid ColumnDefinitions="*,*" />
+        <Grid/>
+        <Grid Grid.Row="1">
+            <RoundRectangle Margin="-5,-30,-5,-2"
+                            CornerRadius="30, 30, 0, 0"
+                            Fill="White" />
+            <ScrollView>
+                <VerticalStackLayout Margin="30, 0 , 30, 0">
+                    <Label FontAttributes="Bold"
+                       FontFamily="RyeRegular"
+                       FontSize="Medium"
+                       Text="Bienvenido"
+                       TextColor="#2D2D2D" />
+
+                    <Label FontSize="Small"
+                       Text="Registrate para continuar"
+                       TextColor="#A3A3A4" />
+
+                    <!-- Cedula -->
+                    <Grid Margin="0, 30, 0, 0" ColumnDefinitions=".2*, .8*">
+                        <RoundRectangle BackgroundColor="#EDEBF6"
+                                    CornerRadius="10"
+                                    HeightRequest="60"
+                                    HorizontalOptions="Center"
+                                    VerticalOptions="Center"
+                                    WidthRequest="60"/>
+                        <Image Source="https://cdn-icons-png.flaticon.com/128/16358/16358048.png" />
+                        <Entry Grid.Column="1"
+                           x:Name="CedulaEntry"
+                           Placeholder="Cédula"
+                           PlaceholderColor="#A3A3A4"
+                           TextColor="#2D2D2D"
+                           FontSize="Small"
+                           FontFamily="RyeRegular"
+                           Margin="10, 0, 0, 0"
+                           VerticalOptions="Center"/>
+                    </Grid>
+
+                    <!-- Nombre -->
+                    <Grid Margin="0, 30, 0, 0" ColumnDefinitions=".2*, .8*">
+                        <RoundRectangle BackgroundColor="#EDEBF6"
+                                    CornerRadius="10"
+                                    HeightRequest="60"
+                                    HorizontalOptions="Center"
+                                    VerticalOptions="Center"
+                                    WidthRequest="60"/>
+                        <Image Source="https://cdn-icons-png.flaticon.com/128/16358/16358048.png" />
+                        <Entry Grid.Column="1"
+                           x:Name="NameEntry"
+                           Placeholder="Nombre"
+                           PlaceholderColor="#A3A3A4"
+                           TextColor="#2D2D2D"
+                           FontSize="Small"
+                           FontFamily="RyeRegular"
+                           Margin="10, 0, 0, 0"
+                           VerticalOptions="Center"/>
+                    </Grid>
+
+                    <!-- Apellido -->
+                    <Grid Margin="0, 30, 0, 0" ColumnDefinitions=".2*, .8*">
+                        <RoundRectangle BackgroundColor="#EDEBF6"
+                                    CornerRadius="10"
+                                    HeightRequest="60"
+                                    HorizontalOptions="Center"
+                                    VerticalOptions="Center"
+                                    WidthRequest="60"/>
+                        <Image Source="https://cdn-icons-png.flaticon.com/128/16358/16358048.png" />
+                        <Entry Grid.Column="1"
+                           x:Name="LastNameEntry"
+                           Placeholder="Apellido"
+                           PlaceholderColor="#A3A3A4"
+                           TextColor="#2D2D2D"
+                           FontSize="Small"
+                           FontFamily="RyeRegular"
+                           Margin="10, 0, 0, 0"
+                           VerticalOptions="Center"/>
+                    </Grid>
+
+                    <!-- Correo -->
+                    <Grid Margin="0, 30, 0, 0" ColumnDefinitions=".2*, .8*">
+                        <RoundRectangle BackgroundColor="#EDEBF6"
+                                    CornerRadius="10"
+                                    HeightRequest="60"
+                                    HorizontalOptions="Center"
+                                    VerticalOptions="Center"
+                                    WidthRequest="60"/>
+                        <Image Source="https://cdn-icons-png.flaticon.com/128/16358/16358048.png" />
+                        <Entry Grid.Column="1"
+                           x:Name="EmailEntry"
+                           Placeholder="Correo"
+                           PlaceholderColor="#A3A3A4"
+                           TextColor="#2D2D2D"
+                           FontSize="Small"
+                           FontFamily="RyeRegular"
+                           Margin="10, 0, 0, 0"
+                           VerticalOptions="Center"/>
+                    </Grid>
+
+                    <!-- Telefono -->
+                    <Grid Margin="0, 30, 0, 0" ColumnDefinitions=".2*, .8*">
+                        <RoundRectangle BackgroundColor="#EDEBF6"
+                                    CornerRadius="10"
+                                    HeightRequest="60"
+                                    HorizontalOptions="Center"
+                                    VerticalOptions="Center"
+                                    WidthRequest="60"/>
+                        <Image Source="https://cdn-icons-png.flaticon.com/128/16358/16358048.png" />
+                        <Entry Grid.Column="1"
+                           x:Name="PhoneEntry"
+                           Placeholder="Telefono"
+                           PlaceholderColor="#A3A3A4"
+                           TextColor="#2D2D2D"
+                           FontSize="Small"
+                           FontFamily="RyeRegular"
+                           Margin="10, 0, 0, 0"
+                           VerticalOptions="Center"/>
+                    </Grid>
+
+                    <!-- Contraseña -->
+                    <Grid Margin="0, 30, 0, 0" ColumnDefinitions=".2*, .8*">
+                        <RoundRectangle BackgroundColor="#EDEBF6"
+                                    CornerRadius="10"
+                                    HeightRequest="60"
+                                    HorizontalOptions="Center"
+                                    VerticalOptions="Center"
+                                    WidthRequest="60"/>
+                        <Image Source="https://cdn-icons-png.flaticon.com/128/16358/16358048.png" />
+                        <Entry Grid.Column="1"
+                           x:Name="PasswordEntry"
+                           Placeholder="Contraseña"
+                           PlaceholderColor="#A3A3A4"
+                           TextColor="#2D2D2D"
+                           FontSize="Small"
+                           FontFamily="RyeRegular"
+                           Margin="10, 0, 0, 0"
+                           VerticalOptions="Center"
+                           IsPassword="True"/>
+                    </Grid>
+
+                    <!-- Confirmar Contraseña -->
+                    <Grid Margin="0, 30, 0, 0" ColumnDefinitions=".2*, .8*">
+                        <RoundRectangle BackgroundColor="#EDEBF6"
+                                    CornerRadius="10"
+                                    HeightRequest="60"
+                                    HorizontalOptions="Center"
+                                    VerticalOptions="Center"
+                                    WidthRequest="60"/>
+                        <Image Source="https://cdn-icons-png.flaticon.com/128/16358/16358048.png" />
+                        <Entry Grid.Column="1"
+                           x:Name="ConfirmPasswordEntry"
+                           Placeholder="Confirmar Contraseña"
+                           PlaceholderColor="#A3A3A4"
+                           TextColor="#2D2D2D"
+                           FontSize="Small"
+                           FontFamily="RyeRegular"
+                           Margin="10, 0, 0, 0"
+                           VerticalOptions="Center"
+                           IsPassword="True"/>
+                    </Grid>
+
+                    <Button Text="Registrarse" 
+                    BackgroundColor="Red" 
+                    TextColor="White" 
+                    FontSize="Medium" 
+                    FontAttributes="Bold" 
+                    CornerRadius="30" 
+                    Margin="0, 20, 0, 0" 
+                    Clicked="OnRegisterButtonClicked"/>
+
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Margin="0, 15, 0, 20" >
+                        <Label Text="¿Ya tienes una cuenta? " TextColor="Black" FontSize="15" />
+                        <Label x:Name="lblLogin" Text="Iniciar Sesión" TextColor="Red" FontAttributes="Bold" FontSize="15" />
+                    </StackLayout>
+
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Margin="0, 15, 0, 10" >
+                        <Label Text="BLACKJACK" FontFamily="LibreBarcode" TextColor="red" FontSize="40" />
+                    </StackLayout>
+
+                    <Label Text="Derechos © Reservados" TextColor="red" FontSize="13" Margin="0, 0, 0, 20" VerticalOptions="EndAndExpand" HorizontalTextAlignment="Center" />
+                </VerticalStackLayout>
+            </ScrollView>
+        </Grid>
+    </Grid>
+</ContentPage>
